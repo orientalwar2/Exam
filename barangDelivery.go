@@ -20,20 +20,20 @@ func NewBarangDelivery(c *AppConfig) *BarangDelivery {
 }
 
 func (bd *BarangDelivery) create() {
-	var isExist = false
+	var isExit = false
 	var userChoice string
 
 	bd.mainMenuForm()
-	for isExist == false {
+	for isExit == false {
 		fmt.Printf("\n%s", "Pilih nomor : ")
 		fmt.Scan(&userChoice)
-		switch userChoice {
-		case "01":
+		switch {
+		case userChoice == "01":
 			bd.registerationBarangForm()
-		case "02":
+		case userChoice == "02":
 			bd.viewBarangCollectionForm()
-		case "q":
-			isExist = true
+		case userChoice == "q":
+			isExit = true
 		default:
 			fmt.Println("Menu tidak diketahui")
 		}
@@ -56,7 +56,7 @@ func (bd *BarangDelivery) mainMenuForm() {
 		"q":  "keluar dari aplikasi",
 	}
 	fmt.Printf("%s\n", strings.Repeat("*", 30))
-	fmt.Printf("%26s\n", "Daftar Barang")
+	fmt.Printf("%20s\n", "Daftar Barang")
 	fmt.Printf("%s\n", strings.Repeat("*", 30))
 	for _, menuCode := range bd.menuChoiceOrdered(appMenu) {
 		fmt.Printf("%s. %s\n", menuCode, appMenu[menuCode])
@@ -121,8 +121,8 @@ func (bd *BarangDelivery) viewBarangCollectionForm() {
 	}
 
 	var confirmation2 string
-	fmt.Print("Kembali ke menu utama ?")
-	fmt.Scanln(&confirmation2)
+	fmt.Println("Kembali ke menu utama?")
+	fmt.Scan(&confirmation2)
 
 	if confirmation2 == "y" {
 		bd.mainMenuForm()
