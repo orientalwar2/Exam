@@ -121,7 +121,7 @@ func (bd *BarangDelivery) viewBarangCollectionForm() {
 	}
 
 	var confirmation2 string
-	fmt.Println("Kembali ke menu utama?")
+	fmt.Println("Kembali ke menu utama? (y)")
 	fmt.Scan(&confirmation2)
 
 	if confirmation2 == "y" {
